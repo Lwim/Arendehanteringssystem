@@ -9,16 +9,14 @@ package ärendehanteringssystem;
  *
  * @author lenawikman
  */
-public class Ärendehanteringssystem {
+public class Tasks {
     
-    static CaseController bc = new CaseController();
+    private int taskNr; 
+    private String description; 
+    private String taskStatus; 
+    private double timeBudget; 
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        new RegisterTask().setVisible(true);
+    public Tasks() {
     }
     
 }
