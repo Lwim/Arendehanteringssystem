@@ -82,7 +82,7 @@ public class RegisterCase2 extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Avbryt");
+        jButton3.setText("Tillbaka");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -188,7 +188,8 @@ public class RegisterCase2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.exit(0);
+        this.dispose(); 
+        new RegisterCase1().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
