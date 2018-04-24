@@ -41,7 +41,14 @@ public class Case {
   
     public void setCaseStatus (String caseStatus) {
         this.caseStatus = caseStatus;
-    }   
+    }
+    
+    public String getInstructions() {
+        return instructions; 
+    }
+    public void setInstructions(String instructions) {
+        this.instructions = instructions; 
+    } 
 }
   
 
