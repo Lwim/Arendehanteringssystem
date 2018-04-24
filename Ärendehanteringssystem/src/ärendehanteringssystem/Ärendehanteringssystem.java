@@ -6,7 +6,7 @@
 package ärendehanteringssystem;
 
 import Controller.CaseController;
-import View.RegisterTask;
+import View.ProcessView;
 
 /**
  *
@@ -14,14 +14,14 @@ import View.RegisterTask;
  */
 public class Ärendehanteringssystem {
     
-    static CaseController bc = new CaseController();
+
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        new RegisterTask().setVisible(true);
+        new ProcessView().setVisible(true);
     }
     
 }
