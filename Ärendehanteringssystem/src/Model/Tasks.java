@@ -44,6 +44,9 @@ public class Tasks {
    
     public void setTimebudget (double timeBudget) {
         this.timeBudget = timeBudget;
-    }   
+    }  
+    public double getTimebudge () {
+        return timeBudget;
+    }  
 }  
 
