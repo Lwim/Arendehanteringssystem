@@ -18,5 +18,30 @@ public class Case {
     
     public Case() {
 }
+   
+    public int getCaseNr() {
+        return caseNr;
+    }
     
+    public void setCaseNr(int caseNr ) {
+        this.caseNr = caseNr;
+    }
+     
+    public String getCategory() {
+        return category;
+    }
+   
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    public String getCaseStatus() {
+        return caseStatus;
+    }
+  
+    public void setCaseStatus (String caseStatus) {
+        this.caseStatus = caseStatus;
+    }   
 }
+  
+

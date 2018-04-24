@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package ärendehanteringssystem;
-
-import Controller.CaseController;
-import View.ProcessView;
+import View.CaseMenu;
 
 /**
  *
@@ -14,14 +12,13 @@ import View.ProcessView;
  */
 public class Ärendehanteringssystem {
     
-
+    static int CaseNumber = 1000; //löpnummer för ärenden
+    static int Tasknumber = 1000; //löpnummer för arbetsuppgifter
+   
     
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
-        new ProcessView().setVisible(true);
+        new CaseMenu().setVisible(true);
     }
     
 }
