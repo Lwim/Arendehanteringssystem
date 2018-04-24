@@ -3,14 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ärendehanteringssystem;
+package Controller;
 
 import java.util.ArrayList;
+import Model.Case;
+import Model.Tasks;
 /**
  *
  * @author lenawikman
  */
 public class CaseController {
+    static final String host="jdbc:mysql://localhost:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
+    static final String username="root";
+    static final String password="";
+    
     ArrayList<Case> caseList = new ArrayList();
         //deklarering av array caseList
     

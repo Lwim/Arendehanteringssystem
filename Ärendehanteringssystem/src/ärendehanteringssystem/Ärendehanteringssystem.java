@@ -5,6 +5,9 @@
  */
 package ärendehanteringssystem;
 
+import Controller.CaseController;
+import View.RegisterTask;
+
 /**
  *
  * @author lenawikman

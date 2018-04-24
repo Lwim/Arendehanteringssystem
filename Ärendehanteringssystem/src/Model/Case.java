@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ärendehanteringssystem;
+package Model;
 
 /**
  *
  * @author lenawikman
  */
-public class Tasks {
+public class Case {
     
-    private int taskNr; 
-    private String description; 
-    private String taskStatus; 
-    private double timeBudget; 
+    private int caseNr; 
+    private String category; 
+    private String caseStatus; 
+    private String instructions; 
     
-    public Tasks() {
-    }
+    public Case() {
+}
     
 }
