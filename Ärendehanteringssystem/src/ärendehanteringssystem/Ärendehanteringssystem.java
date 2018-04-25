@@ -12,9 +12,6 @@ import View.CaseMenu;
  */
 public class Ärendehanteringssystem {
     
-    static int CaseNumber = 1000; //löpnummer för ärenden
-    static int Tasknumber = 1000; //löpnummer för arbetsuppgifter
-   
     
     public static void main(String[] args) {
         

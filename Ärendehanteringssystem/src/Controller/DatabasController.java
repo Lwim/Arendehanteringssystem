@@ -5,23 +5,18 @@
  */
 package Controller;
 
-import java.util.ArrayList;
-import Model.Case;
-import Model.Tasks;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-import java.util.List;
-import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.*;
 /**
  *
  * @author lenawikman
  */
-public class CaseController {
+public class DatabasController {
     static final String host="jdbc:mysql://localhost:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
     static final String password=""; //ange eventuellt lösenord
@@ -30,25 +25,26 @@ public class CaseController {
     private final PreparedStatement insertArende;
     private final PreparedStatement deleteArende;
     private final PreparedStatement selectArende;
+    private final PreparedStatement insertArbetsuppgifter; 
+    private final PreparedStatement deleteArbetsuppgifter;
+    private final PreparedStatement selectArbetsuppgifter; 
     
     private final String arende_INSERT = "INSERT INTO arende (message) VALUES(?)";
-    private final String arende_DELETE = "DELETE FROM arende WHERE messageID = ?";
+    private final String arende_DELETE = "DELETE FROM arende WHERE arendeNr = ?";
     private final String arende_SELECT = "SELECT ? FROM arende";
+    private final String arbetsuppgifter_INSERT = "INSERT INTO arbetsuppgifter VALUES(?)"; 
+    private final String arbetsuppgifter_DELETE = "DELETE ? FROM arbetsuppgifter WHERE arbetsuppgNr = ?";
+    private final String arbetsuppgifter_SELECT = "SELECT ? FROM arbetsuppgifter";
     
-    ArrayList<Case> caseList = new ArrayList();
-        //deklarering av array caseList
-    
-    ArrayList<Tasks> taskList = new ArrayList();
-        //deklarering av array taskList 
-    
-    Case c;
-    Tasks a;
-
-    public CaseController() throws SQLException {
+   
+    public DatabasController() throws SQLException {
         connectToDb();
         selectArende = con.prepareStatement(arende_SELECT);
         insertArende = con.prepareStatement(arende_INSERT);
         deleteArende = con.prepareStatement(arende_DELETE);
+        insertArbetsuppgifter = con.prepareStatement(arbetsuppgifter_INSERT);
+        deleteArbetsuppgifter = con.prepareStatement(arbetsuppgifter_DELETE);
+        selectArbetsuppgifter = con.prepareStatement(arbetsuppgifter_SELECT); 
     }
     
     public void connectToDb() throws SQLException {
@@ -59,17 +55,7 @@ public class CaseController {
     public void closeDbConnection() throws SQLException {
         con.close();
     }
-    
-    
-    //spara case i ArrayList
-    public void addCase(Case Case){
-        caseList.add(Case);
-    
-}
-//spara task i ArrayList
-    public void addTask(Tasks task){
-        taskList.add(task);
-    }
+
     //Hämtar högsta registrerade ärendenumret och returnerar det + 1
     public int getNewCaseNr ()throws SQLException{
         int nextNr = 0;
@@ -84,4 +70,7 @@ public class CaseController {
         closeDbConnection();
         return nextNr;
     }
+    
+    
+    
 }

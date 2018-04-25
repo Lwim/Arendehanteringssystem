@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-import Controller.CaseController;
+import Controller.DatabasController;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 /**
@@ -22,7 +22,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
         
         //Skriver ut nästa ärendenumret på skärmen
         try {
-            CaseController cc = new CaseController();
+            DatabasController cc = new DatabasController();
             int nextNr = cc.getNewCaseNr();
             String arendeNr = Integer.toString(nextNr);
             jLabel5.setText(arendeNr);
