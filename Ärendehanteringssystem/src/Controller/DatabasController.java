@@ -70,16 +70,14 @@ public class DatabasController {
         closeDbConnection();
         return nextNr;
     }
-    public void setAttributesToCase(String arendeNr, String instructions, String category) throws SQLException{
-        String status = "aktiv"; //Vilka är de olika statusarna? 
-        
+    
+    public void saveCaseToDatabase(String arendeNr, String instructions, String category) throws SQLException{
+        String status = "aktiv"; //Ska alternativa statusar finnas?
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
-        
         String insert = "INSERT INTO arende VALUES" +"("+ arendeNr +", "+ "\""+ instructions +"\", "+ "\""+status+"\", " +"\""+ category+"\");";
-        System.out.println(insert); //test query
+        System.out.println(insert);
         stmt.executeUpdate(insert);
-        
         closeDbConnection();
     }
     

@@ -199,7 +199,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
             String instructions = inst.getText();
             String category = (String)jComboBox1.getSelectedItem();
        
-            cc.setAttributesToCase(arendeNr, instructions, category);
+            cc.saveCaseToDatabase(arendeNr, instructions, category);
             
         } catch (SQLException ex) {
             Logger.getLogger(RegisterCase1.class.getName()).log(Level.SEVERE, null, ex);
