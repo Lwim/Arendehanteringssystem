@@ -17,9 +17,9 @@ import java.sql.*;
  * @author lenawikman
  */
 public class DatabasController {
-    static final String host="jdbc:mysql://localhost:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
+    static final String host="jdbc:mysql://127.0.0.1:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
-    static final String password=""; //ange eventuellt lösenord
+    static final String password="elisama"; //ange eventuellt lösenord
     
     private Connection con = null;
     private final PreparedStatement insertArende;
@@ -70,7 +70,18 @@ public class DatabasController {
         closeDbConnection();
         return nextNr;
     }
-    
+    public void setAttributesToCase(String arendeNr, String instructions, String category) throws SQLException{
+        String status = "aktiv"; //Vilka är de olika statusarna? 
+        
+        connectToDb();
+        Statement stmt =(Statement)con.createStatement();
+        
+        String insert = "INSERT INTO arende VALUES" +"("+ arendeNr +", "+ "\""+ instructions +"\", "+ "\""+status+"\", " +"\""+ category+"\");";
+        System.out.println(insert); //test query
+        stmt.executeUpdate(insert);
+        
+        closeDbConnection();
+    }
     
     
 }

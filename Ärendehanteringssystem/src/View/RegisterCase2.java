@@ -16,6 +16,8 @@ public class RegisterCase2 extends javax.swing.JFrame {
      */
     public RegisterCase2() {
         initComponents();
+        
+       
     }
 
     /**

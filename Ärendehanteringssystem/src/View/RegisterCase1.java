@@ -6,6 +6,8 @@
 package View;
 import Controller.DatabasController;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -26,10 +28,14 @@ public class RegisterCase1 extends javax.swing.JFrame {
             int nextNr = cc.getNewCaseNr();
             String arendeNr = Integer.toString(nextNr);
             jLabel5.setText(arendeNr);
+             
+                  
         }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att hämta nytt nr.");
                 System.out.println(ex.getMessage());
             
         }
+      
+       
     }
 
     /**
@@ -43,7 +49,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
 
         jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        inst = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -129,7 +135,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
+                    .addComponent(inst)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
@@ -163,7 +169,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(inst, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,8 +190,22 @@ public class RegisterCase1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose(); 
-        new RegisterCase2().setVisible(true);
+             
+        try {
+            DatabasController cc;   
+            cc = new DatabasController();
+            
+            String arendeNr = jLabel5.getText();
+            String instructions = inst.getText();
+            String category = (String)jComboBox1.getSelectedItem();
+       
+            cc.setAttributesToCase(arendeNr, instructions, category);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterCase1.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+         this.dispose(); 
+         new RegisterCase2().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -245,6 +265,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField inst;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -259,6 +280,5 @@ public class RegisterCase1 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
