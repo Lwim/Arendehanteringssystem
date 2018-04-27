@@ -35,4 +35,25 @@ public class ModelController {
         taskList.add(task);
     }
     
+    public void regCase (String caseNr, String instructions, String category, String caseStatus){
+        c = new Case();
+        int nr = Integer.parseInt(caseNr);
+        c.setCaseNr(nr);
+        c.setCategory(category);
+        c.setCaseStatus(caseStatus);
+        c.setInstructions(instructions);
+        addCase(c);
+    }
+    
+    public void regTask(int taskNr, int caseNr, String description, String taskStatus, double timeBudget){
+        a = new Tasks();
+        a.setTaskNr(taskNr);
+        a.setCaseNr(caseNr);
+        a.setDescription(description);
+        a.setTaskStatus(taskStatus);
+        a.setTimebudget(timeBudget);
+        addTask(a);
+    }
+    
+    
 }

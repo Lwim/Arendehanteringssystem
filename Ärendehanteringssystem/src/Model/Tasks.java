@@ -11,7 +11,9 @@ package Model;
  */
 public class Tasks {
     
+
     private int taskNr; 
+    private int caseNr;
     private String description; 
     private String taskStatus; 
     private double timeBudget; 
@@ -48,5 +50,17 @@ public class Tasks {
     public double getTimebudget () {
         return timeBudget;
     }  
+
+    public int getCaseNr() {
+        return caseNr;
+    }
+
+    public void setCaseNr(int caseNr) {
+        this.caseNr = caseNr;
+    }
+
+
+    
+    
 }  
 

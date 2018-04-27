@@ -129,7 +129,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(135, 135, 135))
             .addGroup(layout.createSequentialGroup()
@@ -156,7 +156,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4)))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +178,7 @@ public class RegisterCase1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,8 +198,8 @@ public class RegisterCase1 extends javax.swing.JFrame {
             String arendeNr = jLabel5.getText();
             String instructions = inst.getText();
             String category = (String)jComboBox1.getSelectedItem();
-       
-            cc.saveCaseToDatabase(arendeNr, instructions, category);
+            String caseStatus = "Aktiv";
+            cc.saveCaseToDatabase(arendeNr, instructions, category, caseStatus);
             
         } catch (SQLException ex) {
             Logger.getLogger(RegisterCase1.class.getName()).log(Level.SEVERE, null, ex);
