@@ -19,7 +19,7 @@ import java.sql.*;
 public class DatabasController {
     static final String host="jdbc:mysql://127.0.0.1:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
-    static final String password="1qaz2wsX!@"; //ange eventuellt lösenord
+    static final String password=""; //ange eventuellt lösenord
     
     private Connection con = null;
     private final PreparedStatement insertArende;
