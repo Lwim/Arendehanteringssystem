@@ -20,6 +20,15 @@ public class Tasks {
     
     public Tasks() {
     }
+
+    public Tasks(int taskNr, int caseNr, String description, String taskStatus, double timeBudget) {
+        this.taskNr = taskNr;
+        this.caseNr = caseNr;
+        this.description = description;
+        this.taskStatus = taskStatus;
+        this.timeBudget = timeBudget;
+    }
+    
     
     public int getTaskNr() {
         return taskNr;

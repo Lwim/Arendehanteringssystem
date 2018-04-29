@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import Model.Tasks;
+import java.util.List;
+import java.util.ArrayList;
 import java.sql.*;
 /**
  *
@@ -19,7 +22,7 @@ import java.sql.*;
 public class DatabasController {
     static final String host="jdbc:mysql://127.0.0.1:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
-    static final String password=""; //ange eventuellt lösenord
+    static final String password="1qaz2wsX!@"; //ange eventuellt lösenord
     
     private Connection con = null;
     private final PreparedStatement insertArende;
@@ -71,12 +74,50 @@ public class DatabasController {
         return nextNr;
     }
     
+    public int getNewTaskNr () throws SQLException{
+        int nextNr = 0;
+        connectToDb();
+        Statement stmt = con.createStatement();
+        String sql = "SELECT max(arbetsuppgNr) As arbetsuppgNr FROM arbetsuppgifter";
+        ResultSet rs = stmt.executeQuery(sql);
+           while(rs.next()){
+               nextNr = rs.getInt("arbetsuppgNr");
+           }
+        nextNr = nextNr + 1;
+        closeDbConnection();
+        
+        return nextNr;
+    }
+    
+    public List<Tasks> getTasksforCase(int caseNr) throws SQLException {
+        List<Tasks> lstTasks = new ArrayList<>();
+        ResultSet rs = null;
+        connectToDb();
+        Statement stmt = con.createStatement();
+        String sql = "SELECT * FROM arbetsuppgifter WHERE arendeNr ="+caseNr+";";
+        rs = stmt.executeQuery(sql);
+        while(rs.next()) {
+            lstTasks.add(new Tasks(rs.getInt("arbetsuppgNr"), rs.getInt("arendeNr"), rs.getString("beskrivning"), rs.getString("status"), rs.getDouble("budgeteradTid")));
+        }
+        closeDbConnection();
+        return lstTasks;
+    }
+    
     public void saveCaseToDatabase(String arendeNr, String instructions, String category, String status) throws SQLException{
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
         String insert = "INSERT INTO arende VALUES" +"("+ arendeNr +", "+ "\""+ instructions +"\", "+ "\""+status+"\", " +"\""+ category+"\");";
         System.out.println(insert);
         stmt.executeUpdate(insert);
+        closeDbConnection();
+    }
+    
+    public void addTaskToDatabase(int taskNr, int caseNr, String taskDesc, double timeBudget, String status) throws SQLException{
+        connectToDb();
+        Statement stmt =(Statement)con.createStatement();
+        String insert = "INSERT INTO arbetsuppgifter (arbetsuppgNr, arendeNr, beskrivning, budgeteradTid, tidforbrukad, status) VALUES " + "("+taskNr+", "+caseNr+", '"+taskDesc+"', "+timeBudget+", 0, '"+status+"');";
+        System.out.println(insert);
+        stmt.executeUpdate(insert);        
         closeDbConnection();
     }
     

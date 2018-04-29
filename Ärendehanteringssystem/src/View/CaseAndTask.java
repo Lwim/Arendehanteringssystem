@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import Model.Tasks;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author petter
@@ -265,6 +269,11 @@ public class CaseAndTask extends javax.swing.JFrame {
         jLabel12.setText("Arbetsuppgifter för ärendet");
 
         jButton6.setText("Lägg till");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Nästa");
 
@@ -696,6 +705,53 @@ public class CaseAndTask extends javax.swing.JFrame {
             Logger.getLogger(RegisterCase1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+    //lägg till knapp på registerCase2
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try{
+            String taskDesc = jTextField1.getText();
+            String tid = jTextField2.getText();
+            if(taskDesc.equals("")){
+               JOptionPane.showMessageDialog(rootPane, "Uppgiften får inte vara blank!");
+            }
+            else if(tid.equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Tid får inte vara blank!");
+            }
+            else{
+                   double timeBudget = Double.parseDouble(tid);
+                   DatabasController cc = new DatabasController();
+                   int taskNr = cc.getNewTaskNr();
+                   String status = "aktiv";
+                   int caseNr = Integer.parseInt(arendeNr);        
+                   cc.addTaskToDatabase(taskNr, caseNr, taskDesc, timeBudget, status);
+                   
+                   List <Tasks> taskList = new ArrayList<>();
+                   taskList = cc.getTasksforCase(caseNr);
+                   
+                   int row=0; 
+                   int rows = taskList.size();
+                   Object[][] data = new Object[rows][4];
+                   
+                   for (Tasks ts : taskList){
+                   data[row][0] = ts.getTaskNr();
+                   data[row][1] = ts.getCaseNr();
+                   data[row][2] = ts.getDescription();
+                   data[row][3] = ts.getTimebudget();
+                   row++;
+                   }
+                   
+                   DefaultTableModel tblModel = new DefaultTableModel(data, Constants.TASKS_TABLE_HEADER);
+                   tblMessages.setModel(tblModel);
+                   tblMessages.setShowGrid(true);
+                   jTextField1.setText("");
+                   jTextField2.setText("");
+            }
+            
+        }catch(SQLException ex){
+            Logger.getLogger(RegisterCase2.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Fel format på tid");
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void loadRegisterCase1(){
         meny.setVisible(false);
