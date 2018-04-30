@@ -641,7 +641,7 @@ public class CaseAndTask extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     //Menyknappen i menyn
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-    loadMeny();
+        loadMeny();
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
     //Registrera ärende i menyn
@@ -799,7 +799,10 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);         
+        modifyCase2.setVisible(false);   
+        
+       
+        
     }
     
     private void loadCertifyTask1(){

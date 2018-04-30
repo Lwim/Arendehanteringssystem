@@ -22,7 +22,7 @@ import java.sql.*;
 public class DatabasController {
     static final String host="jdbc:mysql://127.0.0.1:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
-    static final String password=""; //ange eventuellt lösenord
+    static final String password="elisama"; //ange eventuellt lösenord
     
     private Connection con = null;
     private final PreparedStatement insertArende;
@@ -73,7 +73,7 @@ public class DatabasController {
         closeDbConnection();
         return nextNr;
     }
-    
+    //Hämtar högsta registrerade arbetsuppgiftnsummer och returnerar det + 1 
     public int getNewTaskNr () throws SQLException{
         int nextNr = 0;
         connectToDb();
@@ -88,7 +88,7 @@ public class DatabasController {
         
         return nextNr;
     }
-    
+    //hämta arbetsuppgifter för ärende
     public List<Tasks> getTasksforCase(int caseNr) throws SQLException {
         List<Tasks> lstTasks = new ArrayList<>();
         ResultSet rs = null;
@@ -102,7 +102,7 @@ public class DatabasController {
         closeDbConnection();
         return lstTasks;
     }
-    
+    //lägg till ärende i databas
     public void saveCaseToDatabase(String arendeNr, String instructions, String category, String status) throws SQLException{
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
@@ -111,7 +111,7 @@ public class DatabasController {
         stmt.executeUpdate(insert);
         closeDbConnection();
     }
-    
+    //Lägg till arbetsuppgift i databas
     public void addTaskToDatabase(int taskNr, int caseNr, String taskDesc, double timeBudget, String status) throws SQLException{
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
@@ -121,5 +121,32 @@ public class DatabasController {
         closeDbConnection();
     }
     
+//    public void updateCaseStatus (int caseNr, String status) throws SQLException {
+//        connectToDb();
+//        Statement stmt =(Statement)con.createStatement();
+//        String insert = "UPDATE arende SET status = " + status + "WHERE arendeNr =" + caseNr;
+//        System.out.println(insert);
+//        stmt.executeUpdate(insert);        
+//        closeDbConnection();
+//    }
     
+    //uppdaterar ärende i databas
+     public void updateCase (int caseNr,  String category,  String status,  String instructions) throws SQLException {
+        connectToDb();
+        Statement stmt =(Statement)con.createStatement();
+        String update = "UPDATE arende SET kategori =" + category + ", status ="+ status + ", instruktioner ="+ instructions + " WHERE arendeNr =" + caseNr;
+        System.out.println(update);
+        stmt.executeUpdate(update);        
+        closeDbConnection();
+    }
+     //uppdaterar arbetsuppgift i databas
+     public void updateTask (int taskNr, int staffNr,  String description, double timeBudget, double timeUsed, String status) throws SQLException {
+        connectToDb();
+        Statement stmt =(Statement)con.createStatement();
+        String update = "UPDATE arbetsuppgift SET personalNr ="+ staffNr +", beskrivning =" + description +  ", budgeteradTid =" + timeBudget + ", tidforbrukad = " + timeUsed +", status="+ status +  "WHERE arbetsuppgNr =" + taskNr;
+        System.out.println(update);
+        stmt.executeUpdate(update);        
+        closeDbConnection();
+    }
+     
 }

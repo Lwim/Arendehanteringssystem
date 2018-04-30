@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ärendehanteringssystem;
-import View.CaseMenu;
+import View.CaseAndTask;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Ärendehanteringssystem {
     
     public static void main(String[] args) {
         
-        new CaseMenu().setVisible(true);
+       new CaseAndTask().setVisible(true);
     }
     
 }
