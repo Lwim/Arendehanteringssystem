@@ -15,15 +15,14 @@ import java.util.ArrayList;
  */
 public class ModelController {
     
+     //deklarering av array caseList
     ArrayList<Case> caseList = new ArrayList();
-        //deklarering av array caseList
-    
+       
+    //deklarering av array taskList 
     ArrayList<Tasks> taskList = new ArrayList();
-        //deklarering av array taskList 
-    
+        
     Case c;
     Tasks a;
-    
     
     //spara case i ArrayList
     public void addCase(Case Case){
@@ -34,7 +33,7 @@ public class ModelController {
     public void addTask(Tasks task){
         taskList.add(task);
     }
-    
+    // registrera ärende
     public void regCase (String caseNr, String instructions, String category, String caseStatus){
         c = new Case();
         int nr = Integer.parseInt(caseNr);
@@ -44,7 +43,7 @@ public class ModelController {
         c.setInstructions(instructions);
         addCase(c);
     }
-    
+    // registrera arbetsuppgift 
     public void regTask(int taskNr, int caseNr, String description, String taskStatus, double timeBudget){
         a = new Tasks();
         a.setTaskNr(taskNr);
@@ -54,6 +53,20 @@ public class ModelController {
         a.setTimebudget(timeBudget);
         addTask(a);
     }
+     
+//    // hitta arbetsuppgift baserat på ÄrendeNr
+//    public Tasks findTaskbyCaseNr(int caseNr) {
+//       
+//        for (Tasks ts: taskList) {
+//            if (caseNr== ts.getCaseNr()){
+//                a = ts;
+//                return a;
+//               }
+//        }
+//        a = null;
+//        return a;
+//    }
+    
     
     
 }

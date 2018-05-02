@@ -78,7 +78,7 @@ public class DatabasController {
         int nextNr = 0;
         connectToDb();
         Statement stmt = con.createStatement();
-        String sql = "SELECT max(arbetsuppgNr) As arbetsuppgNr FROM arbetsuppgifter";
+        String sql = "SELECT max(arbetsuppgNr) As arbetsuppgNr FROM arbetsuppgift";
         ResultSet rs = stmt.executeQuery(sql);
            while(rs.next()){
                nextNr = rs.getInt("arbetsuppgNr");
@@ -94,7 +94,7 @@ public class DatabasController {
         ResultSet rs = null;
         connectToDb();
         Statement stmt = con.createStatement();
-        String sql = "SELECT * FROM arbetsuppgifter WHERE arendeNr ="+caseNr+";";
+        String sql = "SELECT * FROM arbetsuppgift WHERE arendeNr ="+caseNr+";";
         rs = stmt.executeQuery(sql);
         while(rs.next()) {
             lstTasks.add(new Tasks(rs.getInt("arbetsuppgNr"), rs.getInt("arendeNr"), rs.getString("beskrivning"), rs.getString("status"), rs.getDouble("budgeteradTid")));
@@ -112,10 +112,12 @@ public class DatabasController {
         closeDbConnection();
     }
     //Lägg till arbetsuppgift i databas
-    public void addTaskToDatabase(int taskNr, int caseNr, String taskDesc, double timeBudget, String status) throws SQLException{
+    public void addTaskToDatabase(int taskNr, int caseNr, String taskDesc, double timeBudget, String uppgStatus) throws SQLException{
+        System.out.println("3");
         connectToDb();
+        System.out.println("4");
         Statement stmt =(Statement)con.createStatement();
-        String insert = "INSERT INTO arbetsuppgifter (arbetsuppgNr, arendeNr, beskrivning, budgeteradTid, tidforbrukad, status) VALUES " + "("+taskNr+", "+caseNr+", '"+taskDesc+"', "+timeBudget+", 0, '"+status+"');";
+        String insert = "INSERT INTO arbetsuppgift (arbetsuppgNr, arendeNr, beskrivning, budgeteradTid, tidforbrukad, status) VALUES " + "("+taskNr+", "+caseNr+", '"+taskDesc+"', "+timeBudget+", 0, '"+uppgStatus+"');";
         System.out.println(insert);
         stmt.executeUpdate(insert);        
         closeDbConnection();
@@ -148,5 +150,17 @@ public class DatabasController {
         stmt.executeUpdate(update);        
         closeDbConnection();
     }
+     public void getCategoryForCase(int caseNr) throws SQLException {
+        connectToDb(); 
+        Statement stmt =(Statement)con.createStatement();
+        String select = "SELECT kategori FROM arende WHERE arendeNr = " + caseNr +";" ;
+        System.out.println(select);
+        stmt.executeUpdate(select);        
+        closeDbConnection();
+     }
+     
+         
+     }
+     
      
 }

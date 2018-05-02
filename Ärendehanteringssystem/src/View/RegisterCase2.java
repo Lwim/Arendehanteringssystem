@@ -5,6 +5,11 @@
  */
 package View;
 
+import Controller.DatabasController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author lenawikman
@@ -201,9 +206,30 @@ public class RegisterCase2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        jTextArea3.setText("Arbetsuppgift: " + (jRegTask.getText()) +"\nTidsåtång: " + (jRegTime.getText()));
-        jRegTime.setText("");
-        jRegTask.setText(""); 
+      
+            DatabasController cc;   
+        try {
+            cc = new DatabasController();
+            
+            int caseNr = Integer.parseInt(jTextPane1.getText());
+            double timeBudget = Double.parseDouble(jRegTime.getText());
+            String taskDesc = (String)jRegTask.getText();
+            String uppgStatus = "Inaktiv";
+            int taskNr = cc.getNewTaskNr();
+            
+            cc.addTaskToDatabase(taskNr, caseNr, taskDesc, timeBudget, uppgStatus);
+              
+              jTextArea3.setText("Arbetsuppgift: " + (jRegTask.getText()) +"\nTidsåtång: " + (jRegTime.getText()));
+              jRegTime.setText("");
+              jRegTask.setText(""); 
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterCase2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+            
+       
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

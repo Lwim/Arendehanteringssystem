@@ -82,7 +82,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblMessages1 = new javax.swing.JTable();
+        caseTasks = new javax.swing.JTable();
         jLabel22 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
@@ -90,6 +90,19 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1 = new javax.swing.JPanel();
         certifyTask2 = new javax.swing.JPanel();
         modifyCase1 = new javax.swing.JPanel();
+        jButton10 = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel24 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jButton11 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel28 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
         modifyCase2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -216,7 +229,7 @@ public class CaseAndTask extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton5))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         registerCase1Layout.setVerticalGroup(
             registerCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +289,11 @@ public class CaseAndTask extends javax.swing.JFrame {
         });
 
         jButton7.setText("Nästa");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Avbryt");
 
@@ -308,7 +326,7 @@ public class CaseAndTask extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6))
                     .addGroup(registerCase2Layout.createSequentialGroup()
-                        .addContainerGap(84, Short.MAX_VALUE)
+                        .addContainerGap(106, Short.MAX_VALUE)
                         .addGroup(registerCase2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(registerCase2Layout.createSequentialGroup()
                                 .addComponent(jButton8)
@@ -367,7 +385,7 @@ public class CaseAndTask extends javax.swing.JFrame {
 
         jLabel21.setText("---");
 
-        tblMessages1.setModel(new javax.swing.table.DefaultTableModel(
+        caseTasks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -378,7 +396,7 @@ public class CaseAndTask extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane3.setViewportView(tblMessages1);
+        jScrollPane3.setViewportView(caseTasks);
 
         jLabel22.setText("Ärendets arbetsuppgifter");
 
@@ -484,15 +502,116 @@ public class CaseAndTask extends javax.swing.JFrame {
             .addGap(0, 381, Short.MAX_VALUE)
         );
 
+        jButton10.setText("Redigera");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nätverk", "Applikationer", "Användare", "Säkerhet" }));
+
+        jLabel24.setText("ÄrendeNr:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Avslutad" }));
+
+        jButton11.setText("Sök");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Kategori:");
+
+        jLabel26.setText("Status: ");
+
+        jLabel27.setText("Ärenden: ");
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane4.setViewportView(jTextArea2);
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel28.setText("Hantera ärende");
+
+        jButton12.setText("Nästa");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout modifyCase1Layout = new javax.swing.GroupLayout(modifyCase1);
         modifyCase1.setLayout(modifyCase1Layout);
         modifyCase1Layout.setHorizontalGroup(
             modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(modifyCase1Layout.createSequentialGroup()
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton12)
+                            .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel27)
+                                .addGroup(modifyCase1Layout.createSequentialGroup()
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButton11))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(modifyCase1Layout.createSequentialGroup()
+                                    .addComponent(jLabel25)
+                                    .addGap(103, 103, 103)
+                                    .addComponent(jLabel26))
+                                .addGroup(modifyCase1Layout.createSequentialGroup()
+                                    .addComponent(jLabel24)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton10)))))
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(jLabel28)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         modifyCase1Layout.setVerticalGroup(
             modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 381, Short.MAX_VALUE)
+            .addGroup(modifyCase1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jLabel28)
+                .addGap(18, 18, 18)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton11))
+                        .addGap(1, 1, 1))
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton10)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout modifyCase2Layout = new javax.swing.GroupLayout(modifyCase2);
@@ -717,12 +836,15 @@ public class CaseAndTask extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Tid får inte vara blank!");
             }
             else{
+                   DatabasController cc;
+                   cc = new DatabasController();
+                   
+              
                    double timeBudget = Double.parseDouble(tid);
-                   DatabasController cc = new DatabasController();
                    int taskNr = cc.getNewTaskNr();
-                   String status = "aktiv";
-                   int caseNr = Integer.parseInt(arendeNr);        
-                   cc.addTaskToDatabase(taskNr, caseNr, taskDesc, timeBudget, status);
+                   String uppgStatus = "aktiv";
+                   int caseNr = Integer.parseInt(arendeNr);   
+                   cc.addTaskToDatabase(taskNr, caseNr, taskDesc, timeBudget, uppgStatus);
                    
                    List <Tasks> taskList = new ArrayList<>();
                    taskList = cc.getTasksforCase(caseNr);
@@ -744,6 +866,7 @@ public class CaseAndTask extends javax.swing.JFrame {
                    tblMessages.setShowGrid(true);
                    jTextField1.setText("");
                    jTextField2.setText("");
+                   
             }
             
         }catch(SQLException ex){
@@ -752,6 +875,27 @@ public class CaseAndTask extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fel format på tid");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
+    // nästa knapp i registerCase2 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+           loadRegisterCase3();
+           
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        loadUpdateCase2(); 
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void loadRegisterCase1(){
         meny.setVisible(false);
@@ -789,19 +933,32 @@ public class CaseAndTask extends javax.swing.JFrame {
         
         jLabel9.setText(arendeNr);
         
+        
     }
     
     private void loadRegisterCase3(){
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(true);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
-        modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);   
         
-       
+            meny.setVisible(false);
+            registerCase1.setVisible(false);
+            registerCase2.setVisible(false);
+            registerCase3.setVisible(true);
+            certifyTask1.setVisible(false);
+            certifyTask2.setVisible(false);
+            modifyCase1.setVisible(false);
+            modifyCase2.setVisible(false);
+            
+            
+          try {  
+            DatabasController cc;
+            cc = new DatabasController();
+            jLabel18.setText(arendeNr); //Skriver ut ärendenumret på skärmen
+           
+   
+            cc.getTasksforCase(Integer.parseInt(arendeNr)); 
+               
+        } catch (SQLException ex) {
+            Logger.getLogger(CaseAndTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
@@ -898,9 +1055,13 @@ public class CaseAndTask extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable caseTasks;
     private javax.swing.JPanel certifyTask1;
     private javax.swing.JPanel certifyTask2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -910,6 +1071,9 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -926,6 +1090,11 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -945,7 +1114,9 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -956,6 +1127,5 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JPanel registerCase2;
     private javax.swing.JPanel registerCase3;
     private javax.swing.JTable tblMessages;
-    private javax.swing.JTable tblMessages1;
     // End of variables declaration//GEN-END:variables
 }
