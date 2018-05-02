@@ -14,7 +14,8 @@ public class Ärendehanteringssystem {
     
     
     public static void main(String[] args) {
-        
+       
+       // Kör Jframe
        new CaseAndTask().setVisible(true);
     }
     
