@@ -17,8 +17,16 @@ public class Case {
     private String instructions; 
     
     public Case() {
-}
+    }
+
+    public Case(int caseNr, String category, String caseStatus, String instructions) {
+        this.caseNr = caseNr;
+        this.category = category;
+        this.caseStatus = caseStatus;
+        this.instructions = instructions;
+    }
    
+    
     public int getCaseNr() {
         return caseNr;
     }

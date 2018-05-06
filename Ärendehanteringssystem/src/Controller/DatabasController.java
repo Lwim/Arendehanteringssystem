@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import Model.Tasks;
+import Model.Case;
 import java.util.List;
 import java.util.ArrayList;
 import java.sql.*;
@@ -22,7 +23,7 @@ import java.sql.*;
 public class DatabasController {
     static final String host="jdbc:mysql://127.0.0.1:3306/arendehantering?zeroDateTimeBehavior=convertToNull";
     static final String username="root";
-    static final String password="elisama"; //ange eventuellt lösenord
+    static final String password="1qaz2wsX!@"; //ange eventuellt lösenord
     
     private Connection con = null;
     private final PreparedStatement insertArende;
@@ -102,6 +103,38 @@ public class DatabasController {
         closeDbConnection();
         return lstTasks;
     }
+    
+    public List<Tasks> getDetailedTasks(int caseNr, boolean taskAttest) throws SQLException {
+        List<Tasks> lstTasks = new ArrayList<>();
+        ResultSet rs = null;
+        connectToDb();
+        Statement stmt = con.createStatement();
+        //skapa ny detaljerad task??
+        closeDbConnection();
+        return lstTasks;
+    }
+    
+    //Hämta alla ärenden beroende på status
+    public List<Case> getCases(boolean status) throws SQLException {
+        List<Case> lstCase = new ArrayList<>();
+        ResultSet rs = null;
+        connectToDb();
+        Statement stmt = con.createStatement();
+        String sql1 = "SELECT * FROM arende WHERE NOT status = 'Avslutat'";
+        String sql2 = "SELECT * FROM arende";
+        if (status) {
+            rs = stmt.executeQuery(sql1);    
+        }
+        else {
+            rs = stmt.executeQuery(sql2);
+        }
+        while (rs.next()) {
+            lstCase.add(new Case(rs.getInt("arendeNr"), rs.getString("kategori"), rs.getString("status"), rs.getString("instruktioner")));
+        }
+        closeDbConnection();
+        return lstCase;
+    }
+    
     //lägg till ärende i databas
     public void saveCaseToDatabase(String arendeNr, String instructions, String category, String status) throws SQLException{
         connectToDb();

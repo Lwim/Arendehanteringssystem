@@ -13,6 +13,8 @@ package View;
 
 public class Constants {
     public static final Object[] TASKS_TABLE_HEADER = { "TaskNr", "CaseNr", "Task description", "Time budget"};
-	 
+    public static final Object[] CASE_TABLE_HEADER = { "CaseNr", "Category", "Status", "Instructions"};
+    public static final Object[] FULL_TASKS_TABLE_HEADER = { "TaskNr", "CaseNr", "Personal", "Task description", "Time budget", "Time used", "Status", "Comment", "Attested by"};
+
 } 
 
