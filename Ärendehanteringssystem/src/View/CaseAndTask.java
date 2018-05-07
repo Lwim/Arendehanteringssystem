@@ -24,7 +24,7 @@ public class CaseAndTask extends javax.swing.JFrame {
     static ModelController mc = new ModelController();
     static String arendeNr;
     static boolean caseStatus;
-    static boolean taskAttest;
+
     /**
      * Creates new form ArendeAndTask
      */
@@ -56,7 +56,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
         registerCase1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -103,24 +102,40 @@ public class CaseAndTask extends javax.swing.JFrame {
         modifyCase1 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel24 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
-        jButton11 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
         jLabel28 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tblMessages3 = new javax.swing.JTable();
+        jLabel31 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblMessages4 = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton11 = new javax.swing.JButton();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
-        modifyCase2 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
@@ -138,6 +153,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         });
 
         jButton2.setText("Uppdatera ärende");
+        jButton2.setEnabled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -162,6 +178,11 @@ public class CaseAndTask extends javax.swing.JFrame {
 
             }
         ));
+        tblMessages1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMessages1MouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(tblMessages1);
 
         tblMessages2.setModel(new javax.swing.table.DefaultTableModel(
@@ -189,9 +210,6 @@ public class CaseAndTask extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setSelected(true);
-        jCheckBox2.setText("Ej attesterade arbetsuppgifter");
-
         javax.swing.GroupLayout menyLayout = new javax.swing.GroupLayout(meny);
         meny.setLayout(menyLayout);
         menyLayout.setHorizontalGroup(
@@ -214,11 +232,8 @@ public class CaseAndTask extends javax.swing.JFrame {
                                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(40, 40, 40)
                                         .addComponent(jButton3)))
-                                .addGroup(menyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(menyLayout.createSequentialGroup()
-                                        .addComponent(jLabel30)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jCheckBox2))
+                                .addGroup(menyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel30)
                                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(menyLayout.createSequentialGroup()
                             .addGap(224, 224, 224)
@@ -240,11 +255,9 @@ public class CaseAndTask extends javax.swing.JFrame {
                     .addComponent(jCheckBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(menyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(jCheckBox2))
-                .addGap(4, 4, 4)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel30)
+                .addGap(9, 9, 9)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(110, Short.MAX_VALUE))
         );
@@ -583,7 +596,9 @@ public class CaseAndTask extends javax.swing.JFrame {
             .addGap(0, 381, Short.MAX_VALUE)
         );
 
-        jButton10.setText("Redigera");
+        modifyCase1.setPreferredSize(new java.awt.Dimension(850, 542));
+
+        jButton10.setText("Uppdatera");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -592,118 +607,219 @@ public class CaseAndTask extends javax.swing.JFrame {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nätverk", "Applikationer", "Användare", "Säkerhet" }));
 
-        jLabel24.setText("ÄrendeNr:");
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Påbörjad", "Avslutad" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Avslutad" }));
+        jLabel25.setText("Kategori:");
 
-        jButton11.setText("Sök");
+        jLabel26.setText("Status: ");
+
+        jLabel27.setText("Arbetsuppgifter: ");
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel28.setText("Uppdatera ärende:");
+
+        tblMessages3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tblMessages3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMessages3MouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tblMessages3);
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setText("---");
+
+        jLabel32.setText("Instruktion:");
+
+        tblMessages4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane8.setViewportView(tblMessages4);
+
+        jLabel24.setText("Uppgift:");
+
+        jLabel33.setText("Tidsbudget:");
+
+        jButton11.setText("Lägg till uppgift");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
 
-        jLabel25.setText("Kategori:");
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Påbörjad", "Avslutad" }));
 
-        jLabel26.setText("Status: ");
+        jLabel34.setText("Tidsbudget:");
 
-        jLabel27.setText("Ärenden: ");
+        jLabel35.setText("Uppgift:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
+        jLabel36.setText("Personal:");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane4.setViewportView(jTextArea2);
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel28.setText("Hantera ärende");
-
-        jButton12.setText("Nästa");
+        jButton12.setText("Uppdatera uppgift");
+        jButton12.setEnabled(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
 
+        jLabel38.setText("Status: ");
+
+        jLabel37.setText("Förbrukad tid:");
+
         javax.swing.GroupLayout modifyCase1Layout = new javax.swing.GroupLayout(modifyCase1);
         modifyCase1.setLayout(modifyCase1Layout);
         modifyCase1Layout.setHorizontalGroup(
             modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(modifyCase1Layout.createSequentialGroup()
+                .addGap(131, 131, 131)
                 .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(modifyCase1Layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton12)
-                            .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel27)
-                                .addGroup(modifyCase1Layout.createSequentialGroup()
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(10, 10, 10)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton11))
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(modifyCase1Layout.createSequentialGroup()
-                                    .addComponent(jLabel25)
-                                    .addGap(103, 103, 103)
-                                    .addComponent(jLabel26))
-                                .addGroup(modifyCase1Layout.createSequentialGroup()
-                                    .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton10)))))
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(79, 79, 79)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addComponent(jLabel33)
+                                .addContainerGap(490, Short.MAX_VALUE))
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton11)
+                                .addGap(102, 102, 102))))
                     .addGroup(modifyCase1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel28)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                        .addComponent(jScrollPane7)
+                        .addGap(89, 89, 89))
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel25))
+                                .addGap(84, 84, 84)
+                                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel26))
+                                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                                        .addGap(113, 113, 113)
+                                        .addComponent(jLabel32))
+                                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                                        .addGap(70, 70, 70)
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(93, 93, 93)
+                                        .addComponent(jButton10))))
+                            .addComponent(jLabel27)
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addGap(212, 212, 212)
+                                .addComponent(jLabel28)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel31)))
+                        .addContainerGap(104, Short.MAX_VALUE))
+                    .addGroup(modifyCase1Layout.createSequentialGroup()
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel36))
+                        .addGap(18, 18, 18)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35))
+                        .addGap(18, 18, 18)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel34))
+                        .addGap(18, 18, 18)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(modifyCase1Layout.createSequentialGroup()
+                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton12))
+                            .addComponent(jLabel38))
+                        .addGap(100, 100, 100))))
         );
         modifyCase1Layout.setVerticalGroup(
             modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(modifyCase1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel28)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel25))
+                .addGap(1, 1, 1)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton10)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(modifyCase1Layout.createSequentialGroup()
-                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel25)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton11))
-                        .addGap(1, 1, 1))
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jLabel35)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel38)
+                    .addComponent(jLabel37))
+                .addGap(15, 15, 15)
+                .addGroup(modifyCase1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton12)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10)
-                    .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12)
-                .addContainerGap(59, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout modifyCase2Layout = new javax.swing.GroupLayout(modifyCase2);
-        modifyCase2.setLayout(modifyCase2Layout);
-        modifyCase2Layout.setHorizontalGroup(
-            modifyCase2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
-        modifyCase2Layout.setVerticalGroup(
-            modifyCase2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 381, Short.MAX_VALUE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(meny, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -713,7 +829,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         jLayeredPane1.setLayer(certifyTask1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(certifyTask2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(modifyCase1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(modifyCase2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -730,8 +845,6 @@ public class CaseAndTask extends javax.swing.JFrame {
                 .addComponent(registerCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(modifyCase1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(modifyCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -756,8 +869,6 @@ public class CaseAndTask extends javax.swing.JFrame {
                 .addComponent(registerCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(modifyCase1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(modifyCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -787,22 +898,6 @@ public class CaseAndTask extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem2);
-
-        jMenuItem3.setText("Uppdatera ärende");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem3);
-
-        jMenuItem4.setText("Attestera arbetsuppgift");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Avsluta");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -838,6 +933,10 @@ public class CaseAndTask extends javax.swing.JFrame {
     //Updatera ärendeknappen på menysidan
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         loadUpdateCase1();
+        jLabel31.setText(arendeNr);
+        loadCaseListUpdatePage();
+        int caseNr = Integer.parseInt(arendeNr);
+        loadTaskListUpdatePage(caseNr);
     }//GEN-LAST:event_jButton2ActionPerformed
     //Attestera arbetsuppgift på menysidan
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -865,31 +964,9 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
-    //uppdatera ärende i menyn
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
-        modifyCase1.setVisible(true);
-        modifyCase2.setVisible(false);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-    //attestera arbetsuppgift i menyn
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(false);
-        certifyTask1.setVisible(true);
-        certifyTask2.setVisible(false);
-        modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-    //Nästa knappen på RegisterCase1
+
+   //Nästa knappen på RegisterCase1
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             DatabasController cc;   
@@ -900,7 +977,7 @@ public class CaseAndTask extends javax.swing.JFrame {
             String category = (String)jComboBox1.getSelectedItem();
             String caseStatus = "Aktiv";
             mc.regCase(arendeNr, instructions, category, caseStatus);
-            cc.saveCaseToDatabase(arendeNr, instructions, category, caseStatus);
+            cc.saveCaseToDatabase(arendeNr, category, instructions, caseStatus);
             registerCase1.setVisible(false);
             registerCase2.setVisible(true);
             jTextArea1.setText("");
@@ -965,22 +1042,22 @@ public class CaseAndTask extends javax.swing.JFrame {
            loadRegisterCase3();
            
     }//GEN-LAST:event_jButton7ActionPerformed
-
+    //Uppdateraknappen på uppdaterasidan
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        try{
+            int caseNr = Integer.parseInt(arendeNr);
+            String category = (String)jComboBox2.getSelectedItem();
+            String caseStat = (String)jComboBox3.getSelectedItem();
+            String instructions = jTextField4.getText();
+            DatabasController cc = new DatabasController();
+            cc.updateCase(caseNr, category, caseStat, instructions);
+            loadCaseListUpdatePage();
+            
+            
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att uppdatera ärendet");
+                System.out.println(ex.getMessage());
+    }
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        loadUpdateCase2(); 
-    }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
         if (jCheckBox1.isSelected()) {
@@ -991,7 +1068,76 @@ public class CaseAndTask extends javax.swing.JFrame {
         }
         loadCaseListMenyPage();
     }//GEN-LAST:event_jCheckBox1MouseClicked
-
+    //När ärende markerats på förstasidan
+    private void tblMessages1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMessages1MouseClicked
+        int rowNr = tblMessages1.getSelectedRow();
+        int id = Integer.parseInt(tblMessages1.getValueAt(rowNr,0).toString());     
+        jButton2.setEnabled(true);
+        loadTaskListMenyPage(id);
+        arendeNr = Integer.toString(id);
+    }//GEN-LAST:event_tblMessages1MouseClicked
+    //Lägg till uppgiftsknapp på uppdateraärendesidan.
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        try {
+        String taskDesc = jTextField5.getText();
+        String tid = jTextField6.getText();
+        if(taskDesc.equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Uppgiften får inte vara blank!");
+        }
+        else if(tid.equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Tid får inte vara blank!");
+        }
+        else{
+            DatabasController cc;
+            cc = new DatabasController();
+				   
+            double timeBudget = Double.parseDouble(tid);
+            int taskNr = cc.getNewTaskNr();
+            String uppgStatus = "Aktiv";
+            int caseNr = Integer.parseInt(arendeNr);   
+            cc.addTaskToDatabase(taskNr, caseNr, taskDesc, timeBudget, uppgStatus);
+            loadTaskListUpdatePage(caseNr);
+	}
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att uppdatera ärendet");
+                System.out.println(ex.getMessage()); 
+        }
+    }//GEN-LAST:event_jButton11ActionPerformed
+    //Listan med tasks på updatesidan
+    private void tblMessages3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMessages3MouseClicked
+       jButton12.setEnabled(true); 
+       int rowNr = tblMessages3.getSelectedRow();
+       jTextField7.setText(tblMessages3.getValueAt(rowNr,2).toString());
+       jTextField8.setText((tblMessages3.getValueAt(rowNr,3).toString()));
+       jTextField9.setText((tblMessages3.getValueAt(rowNr,4).toString()));
+       jTextField10.setText((tblMessages3.getValueAt(rowNr,5).toString()));
+    }//GEN-LAST:event_tblMessages3MouseClicked
+    //Uppdatera task på updatesidan
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        try{
+        int rowNr = tblMessages3.getSelectedRow();
+        int taskNr = Integer.parseInt(tblMessages3.getValueAt(rowNr,0).toString());
+        String pers = jTextField7.getText();
+        int persNr = Integer.parseInt(pers);
+        String taskDesc = jTextField8.getText();
+        String taskStat = (String)jComboBox4.getSelectedItem();
+        String tid = jTextField9.getText();
+        double timeBudget = Double.parseDouble(tid);
+        String tidAnv = jTextField10.getText();
+        double timeUsed = Double.parseDouble(tidAnv);
+               
+        DatabasController cc;
+        cc = new DatabasController();
+        cc.updateTask(taskNr, persNr, taskDesc, timeBudget, timeUsed, taskStat);
+        
+        int id = Integer.parseInt(tblMessages3.getValueAt(0,1).toString());
+        loadTaskListUpdatePage(id);
+        jButton12.setEnabled(false);
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att uppdatera uppgiften");
+                System.out.println(ex.getMessage()); 
+        }
+    }//GEN-LAST:event_jButton12ActionPerformed
+    
+    
     private void loadRegisterCase1(){
         meny.setVisible(false);
         registerCase1.setVisible(true);
@@ -1000,7 +1146,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false); 
         
         //Skriver ut nästa ärendenumret på skärmen
         try {
@@ -1024,8 +1169,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false); 
-        
         jLabel9.setText(arendeNr);
         
         
@@ -1040,8 +1183,7 @@ public class CaseAndTask extends javax.swing.JFrame {
             certifyTask1.setVisible(false);
             certifyTask2.setVisible(false);
             modifyCase1.setVisible(false);
-            modifyCase2.setVisible(false);
-            
+         
             
           try {  
             DatabasController cc;
@@ -1065,7 +1207,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(true);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);         
+        
     }
     
     private void loadCertifyTask2(){
@@ -1076,7 +1218,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(true);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);         
+        
     }
     
     private void loadUpdateCase1(){
@@ -1087,19 +1229,10 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(true);
-        modifyCase2.setVisible(false);         
+        jButton12.setEnabled(false);
     }
     
-    private void loadUpdateCase2(){
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
-        modifyCase1.setVisible(false);
-        modifyCase2.setVisible(true);         
-    }
+
     
     private void loadMeny(){
         
@@ -1111,8 +1244,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         certifyTask1.setVisible(false);
         certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
-        modifyCase2.setVisible(false);
-        
+        jButton2.setEnabled(false);
         if (jCheckBox1.isSelected()) {
             caseStatus = true;
         }
@@ -1125,6 +1257,99 @@ public class CaseAndTask extends javax.swing.JFrame {
             
     }
     }
+    //Metod för att ladda listan med tasks på uppdaterasidan
+    private void loadTaskListUpdatePage(int id){
+        try{
+            DatabasController cc = new DatabasController();
+            List <Tasks> taskList = new ArrayList<>();
+            taskList = cc.getDetailedTasks(id);
+            
+            int row=0; 
+            int rows = taskList.size();
+            Object[][] data = new Object[rows][9];
+            
+            for (Tasks ts : taskList){
+                   data[row][0] = ts.getTaskNr();
+                   data[row][1] = ts.getCaseNr();
+                   data[row][2] = ts.getPersonalNr();
+                   data[row][3] = ts.getDescription();
+                   data[row][4] = ts.getTimebudget();
+                   data[row][5] = ts.getTimeUsed();
+                   data[row][6] = ts.getTaskStatus();
+                   data[row][7] = ts.getComment();
+                   data[row][8] = ts.getAttestedBy();
+                   row++;
+                   }
+            DefaultTableModel tblModel = new DefaultTableModel(data, Constants.FULL_TASKS_TABLE_HEADER);
+                   tblMessages3.setModel(tblModel);
+                   tblMessages3.setShowGrid(true);
+                   
+           
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att hämta arbetsuppgifter för valt ärende");
+                System.out.println(ex.getMessage());
+    }
+    }
+    
+    //Metod för att ladda listan med arbetsuppgifter på menysidan
+    private void loadTaskListMenyPage(int id){
+        try{
+            DatabasController cc = new DatabasController();
+            List <Tasks> taskList = new ArrayList<>();
+            taskList = cc.getDetailedTasks(id);
+            
+            int row=0; 
+            int rows = taskList.size();
+            Object[][] data = new Object[rows][9];
+            
+            for (Tasks ts : taskList){
+                   data[row][0] = ts.getTaskNr();
+                   data[row][1] = ts.getCaseNr();
+                   data[row][2] = ts.getPersonalNr();
+                   data[row][3] = ts.getDescription();
+                   data[row][4] = ts.getTimebudget();
+                   data[row][5] = ts.getTimeUsed();
+                   data[row][6] = ts.getTaskStatus();
+                   data[row][7] = ts.getComment();
+                   data[row][8] = ts.getAttestedBy();
+                   row++;
+                   }
+            DefaultTableModel tblModel = new DefaultTableModel(data, Constants.FULL_TASKS_TABLE_HEADER);
+                   tblMessages2.setModel(tblModel);
+                   tblMessages2.setShowGrid(true);
+                   
+           
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att hämta arbetsuppgifter för valt ärende");
+                System.out.println(ex.getMessage());
+    }
+    } 
+    //Ladda data på ärendetabellen i uppdaterasidan
+    private void loadCaseListUpdatePage(){
+        try{
+            DatabasController cc = new DatabasController();
+            List <Case> caseList = new ArrayList<>();
+            caseList = cc.getCase(arendeNr);
+            
+            int row=0; 
+            int rows = caseList.size();
+            Object[][] data = new Object[rows][4];
+            
+            for (Case cs : caseList){
+                   data[row][0] = cs.getCaseNr();
+                   data[row][1] = cs.getCategory();
+                   data[row][2] = cs.getCaseStatus();
+                   data[row][3] = cs.getInstructions();
+                   row++;
+                   }
+            DefaultTableModel tblModel = new DefaultTableModel(data, Constants.CASE_TABLE_HEADER);
+                   tblMessages4.setModel(tblModel);
+                   tblMessages4.setShowGrid(true);
+            
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att hämta ärenden");
+                System.out.println(ex.getMessage());
+    }
+    }
+    
+    //Metod för att ladda listan med ärenden på menysidan
     private void loadCaseListMenyPage(){
         try{
             DatabasController cc = new DatabasController();
@@ -1204,7 +1429,6 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
@@ -1233,6 +1457,14 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1245,28 +1477,36 @@ public class CaseAndTask extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel meny;
     private javax.swing.JPanel modifyCase1;
-    private javax.swing.JPanel modifyCase2;
     private javax.swing.JPanel registerCase1;
     private javax.swing.JPanel registerCase2;
     private javax.swing.JPanel registerCase3;
     private javax.swing.JTable tblMessages;
     private javax.swing.JTable tblMessages1;
     private javax.swing.JTable tblMessages2;
+    private javax.swing.JTable tblMessages3;
+    private javax.swing.JTable tblMessages4;
     // End of variables declaration//GEN-END:variables
 }

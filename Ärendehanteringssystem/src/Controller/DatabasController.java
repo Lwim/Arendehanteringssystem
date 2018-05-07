@@ -103,13 +103,18 @@ public class DatabasController {
         closeDbConnection();
         return lstTasks;
     }
-    
-    public List<Tasks> getDetailedTasks(int caseNr, boolean taskAttest) throws SQLException {
+    //Hämta detaljerade arbetsuppgifter
+    public List<Tasks> getDetailedTasks(int caseNr) throws SQLException {
         List<Tasks> lstTasks = new ArrayList<>();
         ResultSet rs = null;
         connectToDb();
         Statement stmt = con.createStatement();
-        //skapa ny detaljerad task??
+        String sql = "SELECT * FROM arbetsuppgift WHERE arendeNr ='" + caseNr +"'";
+        rs = stmt.executeQuery(sql); 
+        while (rs.next()) {
+            lstTasks.add(new Tasks(rs.getInt("arbetsuppgNr"), rs.getInt("arendeNr"), rs.getString("beskrivning"), rs.getString("status"), rs.getDouble("budgeteradTid"), rs.getInt("personalNr"), rs.getDouble("tidforbrukad"), rs.getString("kommentar"), rs.getString("attesteradAv")));
+        }
+        
         closeDbConnection();
         return lstTasks;
     }
@@ -123,16 +128,30 @@ public class DatabasController {
         String sql1 = "SELECT * FROM arende WHERE NOT status = 'Avslutat'";
         String sql2 = "SELECT * FROM arende";
         if (status) {
-            rs = stmt.executeQuery(sql1);    
+            rs = stmt.executeQuery(sql2);    
         }
         else {
-            rs = stmt.executeQuery(sql2);
+            rs = stmt.executeQuery(sql1);
         }
         while (rs.next()) {
             lstCase.add(new Case(rs.getInt("arendeNr"), rs.getString("kategori"), rs.getString("status"), rs.getString("instruktioner")));
         }
         closeDbConnection();
         return lstCase;
+    }
+    
+    public List<Case> getCase(String caseNr) throws SQLException{
+       List<Case> lstCase = new ArrayList<>();
+       ResultSet rs = null;
+       connectToDb();
+       Statement stmt = con.createStatement(); 
+       String sql = "SELECT * FROM arende WHERE arendeNr ='" + caseNr +"'";
+       rs = stmt.executeQuery(sql);
+       while (rs.next()) {
+            lstCase.add(new Case(rs.getInt("arendeNr"), rs.getString("kategori"), rs.getString("status"), rs.getString("instruktioner")));
+        }
+       closeDbConnection();
+       return lstCase;
     }
     
     //lägg till ärende i databas
@@ -169,7 +188,7 @@ public class DatabasController {
      public void updateCase (int caseNr,  String category,  String status,  String instructions) throws SQLException {
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
-        String update = "UPDATE arende SET kategori =" + category + ", status ="+ status + ", instruktioner ="+ instructions + " WHERE arendeNr =" + caseNr;
+        String update = "UPDATE arende SET kategori ='" + category + "', status ='"+ status + "', instruktioner ='"+ instructions + "' WHERE arendeNr =" + caseNr;
         System.out.println(update);
         stmt.executeUpdate(update);        
         closeDbConnection();
@@ -178,7 +197,7 @@ public class DatabasController {
      public void updateTask (int taskNr, int staffNr,  String description, double timeBudget, double timeUsed, String status) throws SQLException {
         connectToDb();
         Statement stmt =(Statement)con.createStatement();
-        String update = "UPDATE arbetsuppgift SET personalNr ="+ staffNr +", beskrivning =" + description +  ", budgeteradTid =" + timeBudget + ", tidforbrukad = " + timeUsed +", status="+ status +  "WHERE arbetsuppgNr =" + taskNr;
+        String update = "UPDATE arbetsuppgift SET personalNr ="+ staffNr +", beskrivning ='" + description + "', budgeteradTid =" + timeBudget + ", tidforbrukad ="+ timeUsed + ", status='"+ status + "' WHERE arbetsuppgNr =" + taskNr + ";";
         System.out.println(update);
         stmt.executeUpdate(update);        
         closeDbConnection();
