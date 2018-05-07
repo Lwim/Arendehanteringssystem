@@ -961,8 +961,8 @@ public class CaseAndTask extends javax.swing.JFrame {
             registerCase2.setVisible(true);
             jTextArea1.setText("");
             loadRegisterCase2();
-        } catch (SQLException ex) {
-            Logger.getLogger(RegisterCase1.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Databasfel");
+                System.out.println(ex.getMessage());
         }
     }//GEN-LAST:event_jButton5ActionPerformed
     //lägg till knapp på registerCase2
@@ -1010,8 +1010,8 @@ public class CaseAndTask extends javax.swing.JFrame {
                    
             }
             
-        }catch(SQLException ex){
-            Logger.getLogger(RegisterCase2.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Databasfel");
+                System.out.println(ex.getMessage());
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "Fel format på tid");
         }
@@ -1177,24 +1177,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         
     }
     
-    private void loadCertifyTask1(){
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(false);
-        modifyCase1.setVisible(false);
-        
-    }
-    
-    private void loadCertifyTask2(){
-        meny.setVisible(false);
-        registerCase1.setVisible(false);
-        registerCase2.setVisible(false);
-        registerCase3.setVisible(false);
-        modifyCase1.setVisible(false);
-        
-    }
-    
+
     private void loadUpdateCase1(){
         meny.setVisible(false);
         registerCase1.setVisible(false);
