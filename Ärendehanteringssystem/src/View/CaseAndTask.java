@@ -9,7 +9,7 @@ import Controller.ModelController;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import Model.Tasks;
 import Model.Case;
 import java.util.List;
@@ -97,8 +97,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
-        certifyTask1 = new javax.swing.JPanel();
-        certifyTask2 = new javax.swing.JPanel();
         modifyCase1 = new javax.swing.JPanel();
         jButton10 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -161,6 +159,7 @@ public class CaseAndTask extends javax.swing.JFrame {
         });
 
         jButton3.setText("Attestera arbetsuppgift");
+        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -196,6 +195,11 @@ public class CaseAndTask extends javax.swing.JFrame {
 
             }
         ));
+        tblMessages2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMessages2MouseClicked(evt);
+            }
+        });
         jScrollPane6.setViewportView(tblMessages2);
 
         jLabel29.setText("Ärenden");
@@ -574,28 +578,6 @@ public class CaseAndTask extends javax.swing.JFrame {
                 .addGap(4, 4, 4))
         );
 
-        javax.swing.GroupLayout certifyTask1Layout = new javax.swing.GroupLayout(certifyTask1);
-        certifyTask1.setLayout(certifyTask1Layout);
-        certifyTask1Layout.setHorizontalGroup(
-            certifyTask1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
-        certifyTask1Layout.setVerticalGroup(
-            certifyTask1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 381, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout certifyTask2Layout = new javax.swing.GroupLayout(certifyTask2);
-        certifyTask2.setLayout(certifyTask2Layout);
-        certifyTask2Layout.setHorizontalGroup(
-            certifyTask2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
-        );
-        certifyTask2Layout.setVerticalGroup(
-            certifyTask2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 381, Short.MAX_VALUE)
-        );
-
         modifyCase1.setPreferredSize(new java.awt.Dimension(850, 542));
 
         jButton10.setText("Uppdatera");
@@ -826,8 +808,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         jLayeredPane1.setLayer(registerCase1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(registerCase2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(registerCase3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(certifyTask1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(certifyTask2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(modifyCase1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
@@ -845,40 +825,20 @@ public class CaseAndTask extends javax.swing.JFrame {
                 .addComponent(registerCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(modifyCase1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(certifyTask1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(certifyTask2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addComponent(meny, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 21, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(registerCase1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(registerCase3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(registerCase2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(registerCase2, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(modifyCase1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(certifyTask1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(certifyTask2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(modifyCase1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
         );
 
         jMenu2.setText("File");
@@ -940,7 +900,28 @@ public class CaseAndTask extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     //Attestera arbetsuppgift på menysidan
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        loadCertifyTask1();
+        try{
+            int rowNr = tblMessages2.getSelectedRow();
+//            String name = tblMessages2.getValueAt(rowNr,8).toString();
+            int taskNr = Integer.parseInt(tblMessages2.getValueAt(rowNr,0).toString());
+            int id = Integer.parseInt(tblMessages2.getValueAt(rowNr,1).toString());
+            
+                    String attest = JOptionPane.showInputDialog(rootPane, "skriv under med ditt namn:");
+                    if(attest == null){
+                       JOptionPane.showMessageDialog(rootPane, "Avbruten"); 
+                    }else{
+                    DatabasController cc;
+                    cc = new DatabasController();
+                    cc.attestTask(taskNr, attest);
+                    loadTaskListMenyPage(id);
+                    }
+        
+        }catch (SQLException ex){JOptionPane.showMessageDialog(rootPane, "Det gick inte att attestera arbetsuppgiften");
+                System.out.println(ex.getMessage());
+        }
+        catch(Exception e) {System.out.println(e);}
+                    
+                    
     }//GEN-LAST:event_jButton3ActionPerformed
     //Menyknappen i menyn
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -961,8 +942,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1136,6 +1115,11 @@ public class CaseAndTask extends javax.swing.JFrame {
                 System.out.println(ex.getMessage()); 
         }
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void tblMessages2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMessages2MouseClicked
+        jButton3.setEnabled(true);
+        
+    }//GEN-LAST:event_tblMessages2MouseClicked
     
     
     private void loadRegisterCase1(){
@@ -1143,8 +1127,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(true);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
         
         //Skriver ut nästa ärendenumret på skärmen
@@ -1166,8 +1148,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(true);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
         jLabel9.setText(arendeNr);
         
@@ -1180,8 +1160,6 @@ public class CaseAndTask extends javax.swing.JFrame {
             registerCase1.setVisible(false);
             registerCase2.setVisible(false);
             registerCase3.setVisible(true);
-            certifyTask1.setVisible(false);
-            certifyTask2.setVisible(false);
             modifyCase1.setVisible(false);
          
             
@@ -1204,8 +1182,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(true);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
         
     }
@@ -1215,8 +1191,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(true);
         modifyCase1.setVisible(false);
         
     }
@@ -1226,8 +1200,6 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(true);
         jButton12.setEnabled(false);
     }
@@ -1241,10 +1213,9 @@ public class CaseAndTask extends javax.swing.JFrame {
         registerCase1.setVisible(false);
         registerCase2.setVisible(false);
         registerCase3.setVisible(false);
-        certifyTask1.setVisible(false);
-        certifyTask2.setVisible(false);
         modifyCase1.setVisible(false);
         jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
         if (jCheckBox1.isSelected()) {
             caseStatus = true;
         }
@@ -1414,8 +1385,6 @@ public class CaseAndTask extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable caseTasks;
-    private javax.swing.JPanel certifyTask1;
-    private javax.swing.JPanel certifyTask2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;

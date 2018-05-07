@@ -211,6 +211,15 @@ public class DatabasController {
         closeDbConnection();
      }
      
+     public void attestTask(int taskNr, String name) throws SQLException{
+        connectToDb();
+        Statement stmt =(Statement)con.createStatement();
+        String update = "UPDATE arbetsuppgift SET attesteradAv ='" + name + "' WHERE arbetsuppgNr =" + taskNr +";";
+        System.out.println(update);
+        stmt.executeUpdate(update);
+        closeDbConnection();
+     }
+     
          
      }
      
